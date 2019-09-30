@@ -3,12 +3,6 @@
 import os
 
 
-# board = list(range(10)) # this is only for render test
-board = list()
-markers = dict()
-current_player = 'player1'
-
-
 def render_board(board: list):
     '''
     clear the screen first \n
@@ -23,15 +17,20 @@ def render_board(board: list):
     print(f'\t {board[1]} | {board[2]} | {board[3]} \n')
 
 
-def assign_player():
+def assign_player() -> dict:
     '''
-    assign players to their marker
+    init markers as dict \n
+    assign players to their marker \n
+    return markers
     '''
-    marker = input('Player 1: Do you want to be X or O? ')
-    if marker == 'X':
+    markers = dict()
+    player1_marker = input('Player 1: Do you want to be X or O? ')
+    if player1_marker == 'X':
         markers['player1'], markers['player2'] = 'X', 'O'
-    elif marker == 'O':
+    elif player1_marker == 'O':
         markers['player1'], markers['player2'] = 'O', 'X'
+    
+    return markers
 
 
 def take_user_input() -> int:
@@ -43,7 +42,7 @@ def take_user_input() -> int:
     return int(user_input)
 
 
-def update_board(player_marker: str, user_input: int):
+def update_board(board: list, player_marker: str, user_input: int):
     '''
     takes in a player marker and user input \n
     update the board
@@ -73,16 +72,16 @@ def game() -> bool:
     prompt to play again \n
     return bool depend on play again
     '''
-    board = list('#' * 10)
-    markers = { 'player1': '', 'player2': '' }
-    assign_player()
+    board = list(' ' * 10)
+    markers = assign_player()
+    current_player = 'player1'
     game_over = False
     
     while not game_over:
         render_board(board)
-        update_board( markers[ current_player ] , take_user_input() )
+        update_board(board, markers[ current_player ], take_user_input() )
         render_board(board)
-        game_over = check_game(board)
+        # game_over = check_game(board)
         current_player = 'player2' if current_player == 'player1' else 'player1'
     
     play_again = input('Play again? Yes or No')
