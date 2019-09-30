@@ -52,9 +52,35 @@ def update_board(board: list, player_marker: str, user_input: int):
 
 def check_game(board: list) -> bool:
     '''
+    check if there is a winner
+
     check if the game is won, tied, lost, or ongoing \n
     return bool
     '''
+    return check_winner(board):
+    
+
+def check_winner(b: list, marker: str) -> bool:
+    '''
+    check for 8 possible scenarios \n
+    if there is a matchin scenario \n
+    return True
+    '''
+    scenarios = {
+        1: [b[1], b[2], b[3]],
+        2: [b[4], b[5], b[6]], 
+        3: [b[7], b[8], b[9]],
+        4: [b[1], b[4], b[7]],
+        5: [b[2], b[5], b[8]],
+        6: [b[3], b[6], b[9]],
+        7: [b[1], b[5], b[9]],
+        8: [b[3], b[5], b[7]]
+    }
+
+    for win_set in scenarios.values():
+        if win_set == list(marker * 3):
+            return True
+    return False
 
 
 def game() -> bool:
@@ -79,9 +105,11 @@ def game() -> bool:
     
     while not game_over:
         render_board(board)
-        update_board(board, markers[ current_player ], take_user_input() )
+        update_board(board, markers[current_player], take_user_input() )
         render_board(board)
-        # game_over = check_game(board)
+        if check_winner(board, markers[current_player]):
+            print(f'{current_player} has won the game!')
+            break
         current_player = 'player2' if current_player == 'player1' else 'player1'
     
     play_again = input('Play again? Yes or No')
