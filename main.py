@@ -23,8 +23,10 @@ def assign_player() -> dict:
     assign players to their marker \n
     return markers
     '''
+    os.system('cls||clear')
+
     markers = dict()
-    player1_marker = input('Player 1: Do you want to be X or O? ')
+    player1_marker = input('\n\nPlayer 1: Do you want to be X or O? ')
     if player1_marker == 'X':
         markers['player1'], markers['player2'] = 'X', 'O'
     elif player1_marker == 'O':
@@ -43,13 +45,13 @@ def take_user_input() -> int:
         try:
             int(user_input)
         except:
-            print(f'invalid input: {user_input}')
+            print(f'\tinvalid input: {user_input}\n')
             continue
         else:
             if int(user_input) >= 1 and int(user_input) <= 9:
                 return int(user_input)
             else:
-                print(f'invalid input: {user_input}')
+                print(f'\tinvalid input: {user_input}\n')
 
 
 def update_board(board: list, player_marker: str) -> list:
@@ -61,6 +63,7 @@ def update_board(board: list, player_marker: str) -> list:
     user_input = take_user_input()
 
     while board[user_input] != ' ':
+        print(f'\tslot {user_input} has been already taken\n')
         user_input = take_user_input()
 
     board[user_input] = player_marker
@@ -90,6 +93,16 @@ def check_winner(b: list, marker: str) -> bool:
     return False
 
 
+def check_tie(b: list) -> bool:
+    '''
+    check the board to see if there is a tie \n
+    return bool
+    '''
+    for i in range(1, len(b)):
+        if b[i] == ' ': return False
+    return True
+
+
 def game() -> bool:
     '''
     init board as a list \n
@@ -117,9 +130,12 @@ def game() -> bool:
         if check_winner(board, markers[current_player]):
             print(f'{current_player} has won the game!')
             break
+        elif check_tie(board):
+            print('Game Over')
+            break
         current_player = 'player2' if current_player == 'player1' else 'player1'
     
-    play_again = input('Play again? (Yes or No) ')
+    play_again = input('\nPlay again? (Yes or No) ')
     return True if play_again == 'Yes' else False
 
 
@@ -134,7 +150,7 @@ def main():
     flag = True
     while flag:
         flag = game()
-    print('Thank you for playing')
+    print('Thank you for playing\n')
 
 
 if __name__ == "__main__":
