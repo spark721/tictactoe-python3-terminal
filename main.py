@@ -1,6 +1,7 @@
 
 # import libraries if needed
 import os
+from typing import Dict, List
 
 
 def render_board(board: list):
@@ -25,7 +26,7 @@ def assign_player() -> dict:
     '''
     os.system('cls||clear')
 
-    markers = dict()
+    markers: Dict[str, str] = dict()
     while True:
         player1_marker = input('\n\nPlayer 1: Do you want to be X or O? ')
         if player1_marker.lower() == 'x':
@@ -79,7 +80,7 @@ def check_winner(b: list, marker: str) -> bool:
     if there is a matchin scenario \n
     return True
     '''
-    scenarios = {
+    scenarios: Dict[int, list] = {
         1: [b[1], b[2], b[3]],
         2: [b[4], b[5], b[6]], 
         3: [b[7], b[8], b[9]],
