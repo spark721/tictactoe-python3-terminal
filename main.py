@@ -39,13 +39,13 @@ def assign_player() -> dict:
     return markers
 
 
-def take_user_input() -> int:
+def take_user_input(current_player: str) -> int:
     '''
     prompt for user input \n
     return integer
     '''
     while True:
-        user_input = input('Please select a spot: ')
+        user_input = input(f'{current_player}, please select a spot: ')
         try:
             int(user_input)
         except:
@@ -58,17 +58,17 @@ def take_user_input() -> int:
                 print(f'\tinvalid input: {user_input}\n')
 
 
-def update_board(board: list, player_marker: str) -> list:
+def update_board(board: list, player_marker: str, current_player: str) -> list:
     '''
     takes in board and player marker \n
     grab player input \n
     update and return the board
     '''
-    user_input = take_user_input()
+    user_input = take_user_input(current_player)
 
     while board[user_input] != ' ':
         print(f'\tslot {user_input} has been already taken\n')
-        user_input = take_user_input()
+        user_input = take_user_input(current_player)
 
     board[user_input] = player_marker
     return board
@@ -138,7 +138,7 @@ def game() -> bool:
     
     while not game_over:
         render_board(board)
-        board = update_board(board, markers[current_player])
+        board = update_board(board, markers[current_player], current_player)
         render_board(board)
         if check_winner(board, markers[current_player]):
             print(f'{current_player} has won the game!')

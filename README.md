@@ -21,6 +21,17 @@ My very first project in Python!
         
         $ python3 main.py
 
+- Game board
+    - The slots are numbered as below. Just as in a computer keyboard's number pad.
+
+    ```python
+         7 | 8 | 9 
+        ---|---|---
+         4 | 5 | 6 
+        ---|---|---
+         1 | 2 | 3 
+    ```
+
 ## Feature
 - Input validation / exception handling
     - Implemented exception handling feature for all user inputs with try, except, else block
@@ -50,8 +61,9 @@ My very first project in Python!
 - type hints
     - Utilized 'function annotations' for arguments and return value
 
-        For example,
+        For example, below function takes in board as a list and a marker as a string then returns a boolean value
 
         ```python
         def check_winner(b: list, marker: str) -> bool:
         ``` 
+
