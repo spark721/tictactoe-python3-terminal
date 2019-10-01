@@ -39,13 +39,13 @@ def assign_player() -> dict:
     return markers
 
 
-def take_user_input(current_player: str) -> int:
+def take_user_input(current_player: str, player_marker: str) -> int:
     '''
     prompt for user input \n
     return integer
     '''
     while True:
-        user_input = input(f'{current_player}, please select a spot: ')
+        user_input = input(f'{current_player}, you are \'{player_marker}\'\nplease select a spot: ')
         try:
             int(user_input)
         except:
@@ -64,11 +64,11 @@ def update_board(board: list, player_marker: str, current_player: str) -> list:
     grab player input \n
     update and return the board
     '''
-    user_input = take_user_input(current_player)
+    user_input = take_user_input(current_player, player_marker)
 
     while board[user_input] != ' ':
         print(f'\tslot {user_input} has been already taken\n')
-        user_input = take_user_input(current_player)
+        user_input = take_user_input(current_player, player_marker)
 
     board[user_input] = player_marker
     return board
