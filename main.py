@@ -35,30 +35,37 @@ def assign_player() -> dict:
 
 def take_user_input() -> int:
     '''
-    prompt for user input and update the board \n
+    prompt for user input \n
     return integer
     '''
-    user_input = input('Please select a spot: ')
-    return int(user_input)
+    while True:
+        user_input = input('Please select a spot: ')
+        try:
+            int(user_input)
+        except:
+            print(f'invalid input: {user_input}')
+            continue
+        else:
+            if int(user_input) >= 1 and int(user_input) <= 9:
+                return int(user_input)
+            else:
+                print(f'invalid input: {user_input}')
 
 
-def update_board(board: list, player_marker: str, user_input: int):
+def update_board(board: list, player_marker: str) -> list:
     '''
-    takes in a player marker and user input \n
-    update the board
+    takes in board and player marker \n
+    grab player input \n
+    update and return the board
     '''
+    user_input = take_user_input()
+
+    while board[user_input] != ' ':
+        user_input = take_user_input()
+
     board[user_input] = player_marker
+    return board
 
-
-def check_game(board: list) -> bool:
-    '''
-    check if there is a winner
-
-    check if the game is won, tied, lost, or ongoing \n
-    return bool
-    '''
-    return check_winner(board):
-    
 
 def check_winner(b: list, marker: str) -> bool:
     '''
@@ -105,14 +112,14 @@ def game() -> bool:
     
     while not game_over:
         render_board(board)
-        update_board(board, markers[current_player], take_user_input() )
+        board = update_board(board, markers[current_player])
         render_board(board)
         if check_winner(board, markers[current_player]):
             print(f'{current_player} has won the game!')
             break
         current_player = 'player2' if current_player == 'player1' else 'player1'
     
-    play_again = input('Play again? Yes or No')
+    play_again = input('Play again? (Yes or No) ')
     return True if play_again == 'Yes' else False
 
 
