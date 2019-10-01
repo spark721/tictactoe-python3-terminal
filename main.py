@@ -26,11 +26,14 @@ def assign_player() -> dict:
     os.system('cls||clear')
 
     markers = dict()
-    player1_marker = input('\n\nPlayer 1: Do you want to be X or O? ')
-    if player1_marker == 'X':
-        markers['player1'], markers['player2'] = 'X', 'O'
-    elif player1_marker == 'O':
-        markers['player1'], markers['player2'] = 'O', 'X'
+    while True:
+        player1_marker = input('\n\nPlayer 1: Do you want to be X or O? ')
+        if player1_marker.lower() == 'x':
+            markers['player1'], markers['player2'] = 'X', 'O'
+            break
+        elif player1_marker.lower() == 'o':
+            markers['player1'], markers['player2'] = 'O', 'X'
+            break
     
     return markers
 
