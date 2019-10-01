@@ -103,6 +103,15 @@ def check_tie(b: list) -> bool:
     return True
 
 
+def play_again() -> bool:
+    while True:
+        play_again = input('\nPlay again? (Yes or No) ')
+        if play_again.lower() == 'yes':
+            return True
+        elif play_again.lower() == 'no':
+            return False
+
+
 def game() -> bool:
     '''
     init board as a list \n
@@ -135,8 +144,7 @@ def game() -> bool:
             break
         current_player = 'player2' if current_player == 'player1' else 'player1'
     
-    play_again = input('\nPlay again? (Yes or No) ')
-    return True if play_again == 'Yes' else False
+    return play_again()
 
 
 def main():
@@ -150,7 +158,7 @@ def main():
     flag = True
     while flag:
         flag = game()
-    print('Thank you for playing\n')
+    print('\nThank you for playing\n')
 
 
 if __name__ == "__main__":
