@@ -24,7 +24,7 @@ My very first project in Python!
 - Game board
     - The slots are numbered as below. Just as in a computer keyboard's number pad.
 
-    ```python
+    ```
          7 | 8 | 9 
         ---|---|---
          4 | 5 | 6 
