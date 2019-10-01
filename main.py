@@ -9,7 +9,8 @@ def render_board(board: list):
     clear the screen first \n
     render the current board
     '''
-    os.system('cls||clear')
+    # os.system('cls||clear')
+    os.system('clear||cls')
     
     print(f'\n\t {board[7]} | {board[8]} | {board[9]} ')
     print(f'\t---|---|---')
@@ -135,9 +136,9 @@ def game() -> bool:
     markers = assign_player()
     current_player = 'player1'
     game_over = False
+    render_board(board)
     
     while not game_over:
-        render_board(board)
         board = update_board(board, markers[current_player], current_player)
         render_board(board)
         if check_winner(board, markers[current_player]):
