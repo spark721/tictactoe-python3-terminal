@@ -112,9 +112,9 @@ def check_tie(b: list) -> bool:
 def play_again() -> bool:
     while True:
         play_again = input('\nPlay again? (Yes or No) ')
-        if play_again.lower() == 'yes':
+        if play_again.lower() == 'yes' or play_again.lower() == 'y':
             return True
-        elif play_again.lower() == 'no':
+        elif play_again.lower() == 'no' or play_again.lower() == 'n':
             return False
 
 
