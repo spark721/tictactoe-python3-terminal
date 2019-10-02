@@ -1,11 +1,11 @@
 # Tic Tac Toe
 
 ## Overview
-This is a simple terminal/command prompt game of tic tac toe.
+This is a text-based tic tac toe game for terminal or command prompt
 
 My very first project in Python!
 
-## Codebase
+## Tools used
 - python 3.7.4
 
 ## Instruction
@@ -34,7 +34,7 @@ My very first project in Python!
 
 ## Feature
 - Input validation / exception handling
-    - Implemented exception handling feature for all user inputs with try, except, else block
+    - Implemented exception handling feature for all user inputs with `try`, `except`, `else` block
     
         For example,
 
@@ -59,11 +59,30 @@ My very first project in Python!
         ```
 
 - type hints
-    - Utilized 'function annotations' for arguments and return value
+    - `function annotations` for arguments and return value
 
-        For example, below function takes in board as a list and a marker as a string then returns a boolean value
+        For example, below function takes in board as a `list` and a marker as a `str` then returns a `bool` value
 
         ```python
         def check_winner(b: list, marker: str) -> bool:
         ``` 
 
+    - `variable annotations`
+
+        Examples,
+        ```python
+        user_input: int = take_user_input(current_player, player_marker)
+        ```
+
+        ```python
+        scenarios: Dict[int, list] = {
+            1: [b[1], b[2], b[3]],
+            2: [b[4], b[5], b[6]], 
+            3: [b[7], b[8], b[9]],
+            4: [b[1], b[4], b[7]],
+            5: [b[2], b[5], b[8]],
+            6: [b[3], b[6], b[9]],
+            7: [b[1], b[5], b[9]],
+            8: [b[3], b[5], b[7]]
+        }
+        ```
