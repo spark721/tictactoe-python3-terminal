@@ -12,11 +12,12 @@ def render_board(board: list):
     # os.system('cls||clear')
     os.system('clear||cls')
     
-    print(f'\n\t {board[7]} | {board[8]} | {board[9]} ')
-    print(f'\t---|---|---')
-    print(f'\t {board[4]} | {board[5]} | {board[6]} ')
-    print(f'\t---|---|---')
-    print(f'\t {board[1]} | {board[2]} | {board[3]} \n')
+    print(f'\n\t Slot numbers \t Current Board\n')
+    print(f'\t   7 | 8 | 9 \t   {board[7]} | {board[8]} | {board[9]} ')
+    print(f'\t  ---|---|---\t  ---|---|---')
+    print(f'\t   4 | 5 | 6 \t   {board[4]} | {board[5]} | {board[6]} ')
+    print(f'\t  ---|---|---\t  ---|---|---')
+    print(f'\t   1 | 2 | 3 \t   {board[1]} | {board[2]} | {board[3]} \n\n')
 
 
 def assign_player() -> dict:
@@ -46,7 +47,7 @@ def take_user_input(current_player: str, player_marker: str) -> int:
     return integer
     '''
     while True:
-        user_input = input(f'{current_player}, you are \'{player_marker}\'\nplease select a spot: ')
+        user_input = input(f'{current_player}, you are \'{player_marker}\'\nplease select a slot(1 - 9): ')
         try:
             int(user_input)
         except:
