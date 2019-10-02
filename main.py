@@ -13,11 +13,11 @@ def render_board(board: list):
     os.system('clear||cls')
     
     print(f'\n\t Slot numbers \t Current Board\n')
-    print(f'\t   7 | 8 | 9 \t   {board[7]} | {board[8]} | {board[9]} ')
+    print(f'\t   7 | 8 | 9 \t   {board[7]} | {board[8]} | {board[9]}')
     print(f'\t  ---|---|---\t  ---|---|---')
-    print(f'\t   4 | 5 | 6 \t   {board[4]} | {board[5]} | {board[6]} ')
+    print(f'\t   4 | 5 | 6 \t   {board[4]} | {board[5]} | {board[6]}')
     print(f'\t  ---|---|---\t  ---|---|---')
-    print(f'\t   1 | 2 | 3 \t   {board[1]} | {board[2]} | {board[3]} \n\n')
+    print(f'\t   1 | 2 | 3 \t   {board[1]} | {board[2]} | {board[3]}\n\n')
 
 
 def assign_player() -> dict:
@@ -66,7 +66,7 @@ def update_board(board: list, player_marker: str, current_player: str) -> list:
     grab player input \n
     update and return the board
     '''
-    user_input = take_user_input(current_player, player_marker)
+    user_input: int = take_user_input(current_player, player_marker)
 
     while board[user_input] != ' ':
         print(f'\tslot {user_input} has been already taken\n')
